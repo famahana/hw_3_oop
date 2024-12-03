@@ -1,5 +1,4 @@
 #include "String.h"
-#include <cstring>
 
 
 String::String()
@@ -7,6 +6,7 @@ String::String()
 	size = 80;
 	str = new char[size];
 	str[0] = '\0';
+	counterObject++;
 }
 
 String::String(int size_1)
@@ -14,6 +14,7 @@ String::String(int size_1)
 	size = size_1;
 	str = new char[size];
 	str[0] = '\0';
+	counterObject++;
 }
 
 String::String(const char* userinput)
@@ -27,6 +28,7 @@ String::String(const char* userinput)
 		i++;
 	}
 	str[size] = '\0';
+	counterObject++;
 }
 
 String::String(const String& s)
@@ -35,17 +37,19 @@ String::String(const String& s)
 	this->size = s.size;
 	this->str = new char[strlen(s.str) + 1];
 	strcpy_s(this->str, strlen(s.str) + 1, s.str);
+	counterObject++;
 }
- int String::getCounterObject()
+int String::getCounterObject()
 {
 	return counterObject;
 }
 String::~String()
 {
 	delete[]str;
+	counterObject--;
 }
 void String::showString()
 {
-	cout << str << endl;
+	cout << str <<" " << counterObject << endl;
 }
 int String::counterObject = 0;

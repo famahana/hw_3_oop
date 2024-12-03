@@ -1,4 +1,4 @@
-#include "String.cpp"
+#include "String.h"
 
 int main()
 {
@@ -13,7 +13,6 @@ int main()
 	String st3("Test2321313131");
 	cout << "String: ";
 	st3.showString();
-
 
 	String st4 = st3;
 	cout << "String: ";
